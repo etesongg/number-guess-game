@@ -30,4 +30,3 @@ function play(){
         resultArea.textContent = "정답입니다."
     }
 }
-pickRandomNum()
