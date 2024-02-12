@@ -33,6 +33,12 @@ rangeInput.addEventListener("input", (event) => {
     rangeArea.textContent = `업다운 범위 : ${event.target.value}`;
 });
 
+chanceArea.textContent = `남은 횟수 : ${chanceInput.value}`;
+chanceInput.addEventListener("input", (event) => {
+    chanceArea.textContent = `남은 횟수 : ${event.target.value}`;
+    chances = event.target.value;
+})
+
 function pickRandomNum() {
     computerNum = Math.floor(Math.random()*rangeInput.value) + 1; // Math.random() 메서드는 0-1 사이에 숫자를 제공 그러므로 *rangeInput.value과 소수이하 버리기, +1 을 통해 1-rangeInput.value까지의 숫자로 만들어 줘야 함 
     console.log(computerNum)
@@ -40,9 +46,9 @@ function pickRandomNum() {
 pickRandomNum()
 
 function initializeGame() {
-    chances = chanceInput.value;
-    chanceArea.textContent = `남은 횟수 : ${chances}번`
     userInputList = []
+    chances = chanceInput.value; 
+    gameOver = false;
 }
 initializeGame()
 
@@ -61,7 +67,7 @@ function play() {
     }
 
     chances--;
-    chanceArea.textContent = `남은 횟수 : ${chances}번`;
+    chanceArea.textContent = `남은 횟수 : ${chances}`;
 
     if (userValue < computerNum){
         resultArea.textContent = "UP!!!"
