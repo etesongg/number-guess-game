@@ -18,7 +18,8 @@ let resetButton = document.getElementById("reset-button");
 let userInput = document.getElementById("user-input");
 let resultArea = document.getElementById("result-area");
 let chanceArea = document.getElementById("chance-area");
-
+let rangeInput = document.getElementsByClassName("form-range")[0];
+let rangeArea = document.getElementsByClassName("form-label")[0];
 
 playButton.addEventListener("click", play);
 resetButton.addEventListener("click", reset);
@@ -26,10 +27,13 @@ userInput.addEventListener("focus", function() {
     userInput.value = ""
 })
 
-
+rangeArea.textContent = `업다운 범위 : ${rangeInput.value}`;
+rangeInput.addEventListener("input", (event) => {
+    rangeArea.textContent = `업다운 범위 : ${event.target.value}`;
+});
 
 function pickRandomNum() {
-    computerNum = Math.floor(Math.random()*100) + 1; // Math.random() 메서드는 0-1 사이에 숫자를 제공 그러므로 *100과 소수이하 버리기, +1 을 통해 1-100까지의 숫자로 만들어 줘야 함 
+    computerNum = Math.floor(Math.random()*rangeInput.value) + 1; // Math.random() 메서드는 0-1 사이에 숫자를 제공 그러므로 *rangeInput.value과 소수이하 버리기, +1 을 통해 1-rangeInput.value까지의 숫자로 만들어 줘야 함 
     console.log(computerNum)
 }
 pickRandomNum()
@@ -46,7 +50,7 @@ function play() {
 
     // 유효성 검사
     if (userValue > 100 || userValue < 1){
-        resultArea.textContent = "1~100 사이의 숫자를 입력해 주세요.";
+        resultArea.textContent = `1 ~ ${rangeInput.value} 사이의 숫자를 입력해 주세요.`;
         return; // 밑에 코드를 실행시키지 않는다.
     }
 
