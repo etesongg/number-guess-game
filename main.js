@@ -18,8 +18,9 @@ let resetButton = document.getElementById("reset-button");
 let userInput = document.getElementById("user-input");
 let resultArea = document.getElementById("result-area");
 let chanceArea = document.getElementById("chance-area");
-let rangeInput = document.getElementsByClassName("form-range")[0];
+let rangeInput = document.getElementById("extent-range");
 let rangeArea = document.getElementsByClassName("form-label")[0];
+let chanceInput = document.getElementById("chance-range");
 
 playButton.addEventListener("click", play);
 resetButton.addEventListener("click", reset);
@@ -39,7 +40,7 @@ function pickRandomNum() {
 pickRandomNum()
 
 function initializeGame() {
-    chances = 5;
+    chances = chanceInput.value;
     chanceArea.textContent = `남은 횟수 : ${chances}번`
     userInputList = []
 }
