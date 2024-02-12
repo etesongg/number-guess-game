@@ -1,18 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>number-guess-game</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>Up-Down GAME</h1>
-    <div id="result-area">결과창</div>
-    <input type="number" id="user-input">
-    <button id="play-button">Go</button>
-
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="bg-light">
+    <div class="container mt-5">
+        <div class="child">
+        <h1 class="text-center mb-4">업 다운 게임</h1>
+        <div class="text-center mb-4">
+            <div id="result-area" class="alert alert-info">Up & Down</div>
+            <div id="chance-area">남은 횟수 :</div>
+        </div>
+        <input type="number" placeholder="1~100 사이의 숫자를 입력해 주세요." id="user-input" class="form-control"/>
+        <button id="play-button" class="btn btn-primary round-btn">Go</button>
+        <button id="reset-button" class="btn btn-primary round-btn">Reset</button>
+        </div>
+    </div>
 
     <script src="main.js"></script>
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

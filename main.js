@@ -8,25 +8,81 @@
 // 유저가 1-100 범위 밖에 있는 숫자를 입력하면 알려주고 기회를 깍지 않음
 // 유저가 이미 입력한 숫자를 또 입력하면 알려주고 기회를 깍지 않음
 
-let computerNum = 0
+let computerNum = 0;
+let chances;
+let gameOver = false;
+let userInputList;
+
 let playButton = document.getElementById("play-button");
+let resetButton = document.getElementById("reset-button");
 let userInput = document.getElementById("user-input");
 let resultArea = document.getElementById("result-area");
+let chanceArea = document.getElementById("chance-area");
+
 
 playButton.addEventListener("click", play);
+resetButton.addEventListener("click", reset);
+userInput.addEventListener("focus", function() {
+    userInput.value = ""
+})
 
-function pickRandomNum(){
+
+
+function pickRandomNum() {
     computerNum = Math.floor(Math.random()*100) + 1; // Math.random() 메서드는 0-1 사이에 숫자를 제공 그러므로 *100과 소수이하 버리기, +1 을 통해 1-100까지의 숫자로 만들어 줘야 함 
     console.log(computerNum)
 }
+pickRandomNum()
 
-function play(){
-    let userValue = userInput.value
+function initializeGame() {
+    chances = 5;
+    chanceArea.textContent = `남은 횟수 : ${chances}번`
+    userInputList = []
+}
+initializeGame()
+
+function play() {
+    let userValue = userInput.value;
+
+    // 유효성 검사
+    if (userValue > 100 || userValue < 1){
+        resultArea.textContent = "1~100 사이의 숫자를 입력해 주세요.";
+        return; // 밑에 코드를 실행시키지 않는다.
+    }
+
+    if (userInputList.includes(userValue)){
+         resultArea.textContent = "이미 입력한 숫자입니다. 다른 숫자를 입력해 주세요.";
+         return;
+    }
+
+    chances--;
+    chanceArea.textContent = `남은 횟수 : ${chances}번`;
+
     if (userValue < computerNum){
-        resultArea.textContent = "UP"
+        resultArea.textContent = "UP!!!"
     }else if (userValue > computerNum){
-        resultArea.textContent = "Down"
+        resultArea.textContent = "Down!!!"
     }else {
         resultArea.textContent = "정답입니다."
+        gameOver = true
     }
+
+    userInputList.push(userValue)
+    console.log(userInputList)
+
+    if (chances < 1){
+        gameOver = true
+    }
+
+    if (gameOver == true){
+        playButton.disabled = true;
+    }
+}
+
+function reset() {
+    userInput.value = ""
+    pickRandomNum()
+    resultArea.textContent = "결과창"
+    playButton.disabled = false;
+    initializeGame()
 }
