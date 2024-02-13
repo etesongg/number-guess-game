@@ -17,10 +17,11 @@ let playButton = document.getElementById("play-button");
 let resetButton = document.getElementById("reset-button");
 let userInput = document.getElementById("user-input");
 let resultArea = document.getElementById("result-area");
+let chanceInput = document.getElementById("chance-range");
 let chanceArea = document.getElementById("chance-area");
 let rangeInput = document.getElementById("extent-range");
 let rangeArea = document.getElementsByClassName("form-label")[0];
-let chanceInput = document.getElementById("chance-range");
+
 
 playButton.addEventListener("click", play);
 resetButton.addEventListener("click", reset);
@@ -45,10 +46,19 @@ function pickRandomNum() {
 }
 pickRandomNum()
 
+let initialChanceValue = 50;
+let initialRangeValue = 260;
+
 function initializeGame() {
     userInputList = []
     chances = chanceInput.value; 
     gameOver = false;
+
+    chanceInput.value = initialChanceValue;
+    rangeInput.value = initialRangeValue;
+
+    chanceArea.textContent = "남은 횟수: " + chanceInput.value;
+    rangeArea.textContent = "업다운 범위: " + rangeInput.value;
 }
 initializeGame()
 
