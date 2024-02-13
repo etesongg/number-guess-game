@@ -22,7 +22,6 @@ let chanceArea = document.getElementById("chance-area");
 let rangeInput = document.getElementById("extent-range");
 let rangeArea = document.getElementsByClassName("form-label")[0];
 
-
 playButton.addEventListener("click", play);
 resetButton.addEventListener("click", reset);
 userInput.addEventListener("focus", function() {
@@ -66,7 +65,7 @@ function play() {
     let userValue = userInput.value;
 
     // 유효성 검사
-    if (userValue > 100 || userValue < 1){
+    if (userValue > rangeInput.value || userValue < 1){
         resultArea.textContent = `1 ~ ${rangeInput.value} 사이의 숫자를 입력해 주세요.`;
         return; // 밑에 코드를 실행시키지 않는다.
     }
