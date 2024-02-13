@@ -1,3 +1,4 @@
+//초기 설정
 // 랜덤 번호 지정
 // 유저가 번호를 입력하고 go 버튼을 누름
 // 유저 번호 < 랜덤 번호 UP
@@ -44,6 +45,7 @@ function pickRandomNum() {
     computerNum = Math.floor(Math.random()*rangeInput.value) + 1; // Math.random() 메서드는 0-1 사이에 숫자를 제공 그러므로 *rangeInput.value과 소수이하 버리기, +1 을 통해 1-rangeInput.value까지의 숫자로 만들어 줘야 함 
     console.log(computerNum)
 }
+pickRandomNum()
 
 let initialChanceValue = 50;
 let initialRangeValue = 260;
