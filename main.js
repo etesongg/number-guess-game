@@ -67,7 +67,8 @@ function play() {
     let userValue = userInput.value;
 
     // 유효성 검사
-    if (userValue > rangeInput.value || userValue < 1){
+    let maxExtentValue = parseInt(rangeInput.max);
+    if (userValue > maxExtentValue || userValue < 1){
         resultArea.textContent = `1 ~ ${rangeInput.value} 사이의 숫자를 입력해 주세요.`;
         return; // 밑에 코드를 실행시키지 않는다.
     }
