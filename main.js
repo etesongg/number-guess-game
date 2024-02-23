@@ -43,12 +43,12 @@ chanceInput.addEventListener("input", (event) => {
 
 function pickRandomNum() {
     computerNum = Math.floor(Math.random()*rangeInput.value) + 1; // Math.random() 메서드는 0-1 사이에 숫자를 제공 그러므로 *rangeInput.value과 소수이하 버리기, +1 을 통해 1-rangeInput.value까지의 숫자로 만들어 줘야 함 
-    console.log(computerNum)
 }
 pickRandomNum()
 
-let initialChanceValue = 50;
-let initialRangeValue = 260;
+// 남은 횟수, 업다운 범위의 max 값 수정 후 변경해야 하는 값들
+let initialChanceValue = 15;
+let initialRangeValue = 160;
 
 function initializeGame() {
     userInputList = []
@@ -86,12 +86,11 @@ function play() {
     }else if (userValue > computerNum){
         resultArea.textContent = "Down!!!"
     }else {
-        resultArea.textContent = "정답입니다."
+        resultArea.textContent = "정답입니다!!!"
         gameOver = true
     }
 
     userInputList.push(userValue)
-    console.log(userInputList)
 
     if (chances < 1){
         gameOver = true
