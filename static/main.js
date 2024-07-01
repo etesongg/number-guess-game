@@ -19,16 +19,23 @@ let gameOver = false;
 let chanceArea = document.getElementById("chance-area");
 chanceArea.textContent = `남은 기회: ${chances}`
 let history = [];
+let settingButton = document.getElementById("setting-button");
+let selectRange = document.getElementById("select-range");
+let selectChances = document.getElementById("select-chances");
+let completionButton = document.getElementById("completion-button");
+let inputList = document.getElementById("input-list")
 
 playButton.addEventListener("click", play); // 함수를 매개변수로 넘김 play() 괄호 넣으면 안됨
 resetButton.addEventListener("click", reset);
 userInput.addEventListener("focus", function() {
     userInput.value = ""
 });
-// settingButton.addEventListener("click", setting);
+settingButton.addEventListener("click", setting);
+completionButton.addEventListener("click", completion)
 
-function pickRandomNum() {
-    computerNum = Math.floor(Math.random() * 100) + 1; // Math.random() 0~1 숫자를 반환(이때 1은 포함 안되는 1에 가까운 숫자를 반환)
+function pickRandomNum(min, max) {
+    // computerNum = Math.floor(Math.random() * 100) + 1; // Math.random() 0~1 숫자를 반환(이때 1은 포함 안되는 1에 가까운 숫자를 반환)
+    computerNum = Math.floor(Math.random()*(max-min+1)) + min; // 출처 https://velog.io/@woodie/JS-Math-random
     resultArea.textContent = `테스트용으로 정답 미리 보여주기 ${computerNum}`;
 }
 
@@ -59,7 +66,7 @@ function play() {
     }
 
     history.push(userValue);
-    console.log(history)
+    inputList.textContent = `입력한 숫자 : ${history}`;
 
     if (chances < 1){
         gameOver = true;
@@ -77,4 +84,51 @@ function reset() {
     resultArea.textContent = "결과가 나온다"
 }
 
-pickRandomNum();
+function setting() {
+    let settingArea = document.getElementById("setting-area");
+    console.log(settingArea.style.display)
+    if (settingArea.style.display === "none"){
+        settingArea.style.display = "block";
+    }else{
+        settingArea.style.display = "none";
+    }
+}
+
+function completion() {
+    let rangeValue = selectRange.options[selectRange.selectedIndex].value;
+    let chanceValue = selectChances.options[selectChances.selectedIndex].value;
+
+    switch(true){
+        case rangeValue == 200:
+            pickRandomNum(1, 200);
+            break;
+        case rangeValue == 100:
+            pickRandomNum(1, 100);
+            break;
+        case rangeValue == 50:
+            pickRandomNum(1, 50);
+            break;
+        case rangeValue == 25:
+            pickRandomNum(1, 25);
+            break;    
+    }
+
+    switch(true){
+        case chanceValue == 20:
+            chances = 20;
+            break;
+        case chanceValue == 15:
+            chances = 15;
+            break;
+        case chanceValue == 10:
+            chances = 10;
+            break;
+        case chanceValue == 3:
+            chances = 3;
+            break;
+    }
+    chanceArea.textContent = `남은 기회: ${chances}`
+    setting();
+}
+
+pickRandomNum(1, 100);
