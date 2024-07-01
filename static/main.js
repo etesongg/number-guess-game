@@ -20,6 +20,7 @@ let chanceArea = document.getElementById("chance-area");
 chanceArea.textContent = `남은 기회: ${chances}`
 let history = [];
 let settingButton = document.getElementById("setting-button");
+let settingArea = document.getElementById("setting-area");
 let selectRange = document.getElementById("select-range");
 let selectChances = document.getElementById("select-chances");
 let completionButton = document.getElementById("completion-button");
@@ -85,8 +86,6 @@ function reset() {
 }
 
 function setting() {
-    let settingArea = document.getElementById("setting-area");
-    console.log(settingArea.style.display)
     if (settingArea.style.display === "none"){
         settingArea.style.display = "block";
     }else{
