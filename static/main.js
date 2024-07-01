@@ -34,6 +34,13 @@ userInput.addEventListener("focus", function() {
 settingButton.addEventListener("click", setting);
 completionButton.addEventListener("click", completion)
 
+function initialization(){
+    let chances = 3;
+    let history = [];
+    chanceArea.textContent = `남은 기회: ${chances}`
+    inputList.textContent = `입력한 숫자 : ${history}`;
+}
+
 function pickRandomNum(min, max) {
     // computerNum = Math.floor(Math.random() * 100) + 1; // Math.random() 0~1 숫자를 반환(이때 1은 포함 안되는 1에 가까운 숫자를 반환)
     computerNum = Math.floor(Math.random()*(max-min+1)) + min; // 출처 https://velog.io/@woodie/JS-Math-random
@@ -83,6 +90,7 @@ function reset() {
     userInput.value = "";
     pickRandomNum(1, 100);
     resultArea.textContent = `테스트용으로 정답 미리 보여주기 ${computerNum}`;
+    initialization();
 }
 
 function setting() {
