@@ -80,8 +80,8 @@ function play() {
 
 function reset() {
     userInput.value = "";
-    pickRandomNum();
-    resultArea.textContent = "결과가 나온다"
+    pickRandomNum(1, 100);
+    resultArea.textContent = `테스트용으로 정답 미리 보여주기 ${computerNum}`;
 }
 
 function setting() {
@@ -128,6 +128,8 @@ function completion() {
             break;
     }
     chanceArea.textContent = `남은 기회: ${chances}`
+    history = [];
+    inputList.textContent = `입력한 숫자 : ${history}`;
     setting();
 }
 

@@ -18,12 +18,14 @@
     text-align: center;
     margin-top: 10%;
     font-family: 'RixInooAriDuriR';
+    font-size: 30px;
     color: darkgray;
-    text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
+    text-shadow: -2px 0px black, 0px 2px black, 2px 0px black, 0px -2px black;
 }
 
 h1 {
-    text-shadow: -2px 0px black, 0px 2px black, 2px 0px black, 0px -2px black; 
+    font-size: 50px;
+    text-shadow: -3px 0px black, 0px 3px black, 3px 0px black, 0px -3px black; 
 }
 
 #setting-area {
