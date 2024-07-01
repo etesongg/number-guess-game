@@ -14,9 +14,10 @@ let playButton = document.getElementById("play-button");
 let resetButton = document.getElementById("reset-button");
 let userInput = document.getElementById("user-input");
 let resultArea = document.getElementById("result-area");
-let chances = 5;
+let chances = 3;
 let gameOver = false;
 let chanceArea = document.getElementById("chance-area");
+chanceArea.textContent = `남은 기회: ${chances}`
 let history = [];
 
 playButton.addEventListener("click", play); // 함수를 매개변수로 넘김 play() 괄호 넣으면 안됨
@@ -24,10 +25,11 @@ resetButton.addEventListener("click", reset);
 userInput.addEventListener("focus", function() {
     userInput.value = ""
 });
+// settingButton.addEventListener("click", setting);
 
 function pickRandomNum() {
     computerNum = Math.floor(Math.random() * 100) + 1; // Math.random() 0~1 숫자를 반환(이때 1은 포함 안되는 1에 가까운 숫자를 반환)
-    console.log(computerNum);
+    resultArea.textContent = `테스트용으로 정답 미리 보여주기 ${computerNum}`;
 }
 
 function play() {
@@ -48,11 +50,11 @@ function play() {
     chanceArea.textContent = `남은 기회: ${chances}`
 
     if (userValue < computerNum){
-        resultArea.textContent = "up"
+        resultArea.textContent = "up!"
     }else if (userValue > computerNum){
-        resultArea.textContent = "down"
+        resultArea.textContent = "down!"
     }else {
-        resultArea.textContent = "정답"
+        resultArea.textContent = "정답!"
         playButton.disabled = true;
     }
 

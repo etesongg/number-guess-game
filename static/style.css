@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'RixInooAriDuriR';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2207-01@1.0/RixInooAriDuriR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.container {
+    position: relative;
+    background-image: url('img/background-img.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    height: 100vmin; 
+    width: 100vmin; 
+}
+
+.child {
+    text-align: center;
+    margin-top: 10%;
+    font-family: 'RixInooAriDuriR';
+    color: darkgray;
+    text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
+}
+
+h1 {
+    text-shadow: -2px 0px black, 0px 2px black, 2px 0px black, 0px -2px black; 
+}
+
+#setting-area {
+    display: none; 
+}
+
+.dropdown {
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 50px;
+    /* width: 50%; */
+}
