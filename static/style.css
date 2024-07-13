@@ -10,17 +10,26 @@
     background-image: url('img/background-img.jpg'); 
     background-size: cover; 
     background-position: center; 
-    height: 100vmin; 
-    width: 100vmin; 
+    height: 100vh; 
+    width: 100vw; 
 }
 
 .child {
     text-align: center;
-    margin-top: 10%;
+    margin-top: 5%;
     font-family: 'RixInooAriDuriR';
     font-size: 30px;
     color: darkgray;
-    text-shadow: -2px 0px black, 0px 2px black, 2px 0px black, 0px -2px black;
+    text-shadow: -2px 0px black, 0px 2px black, 2px 0px black, 0px -2px black;display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#input-area {
+    width: 100vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
@@ -28,8 +37,13 @@ h1 {
     text-shadow: -3px 0px black, 0px 3px black, 3px 0px black, 0px -3px black; 
 }
 
+#info {
+    margin-top: 10px;
+}
+
 #setting-area {
     display: none; 
+    width: 100%;
 }
 
 .dropdown {
@@ -39,11 +53,12 @@ h1 {
     align-items: center;
     gap: 20px;
     margin-top: 30px;
-    width: 60%;
+    width: 40vw;
     margin-left: auto;
     margin-right: auto;
 }
 
 #user-input {
     width: 80%;
+    margin-right: 10px;
 }
