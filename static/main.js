@@ -34,17 +34,11 @@ userInput.addEventListener("focus", function() {
 settingButton.addEventListener("click", setting);
 completionButton.addEventListener("click", completion)
 
-function initialization(){
-    let chances = 3;
-    let history = [];
-    chanceArea.textContent = `남은 기회: ${chances}`
-    inputList.textContent = `입력한 숫자 : ${history}`;
-}
-
 function pickRandomNum(min, max) {
     // computerNum = Math.floor(Math.random() * 100) + 1; // Math.random() 0~1 숫자를 반환(이때 1은 포함 안되는 1에 가까운 숫자를 반환)
     computerNum = Math.floor(Math.random()*(max-min+1)) + min; // 출처 https://velog.io/@woodie/JS-Math-random
     resultArea.textContent = `up! down! 재밌는 게임~ `;
+    console.log(computerNum)
 }
 
 function play() {
@@ -69,7 +63,8 @@ function play() {
     }else if (userValue > computerNum){
         resultArea.textContent = "down!"
     }else {
-        resultArea.textContent = "정답!"
+        resultArea.textContent = "정답!!";
+        resultArea.style.color = "#5585b5"
         playButton.disabled = true;
     }
 
@@ -82,15 +77,22 @@ function play() {
 
     if (gameOver){
         playButton.disabled = true;
-        resultArea.textContent = "실패!!"
+        resultArea.textContent = "실패!!";
+        resultArea.style.color = "#f95959"
     }
+    console.log(`chance: ${chances}, history: ${history}`)
 }
 
 function reset() {
+    chances = 3;
+    history = [];
+    gameOver = false
+    playButton.disabled = false;
     userInput.value = "";
-    pickRandomNum(1, 100);
     resultArea.textContent = `up! down! 재밌는 게임~ `;
-    initialization();
+    chanceArea.textContent = `남은 기회: ${chances}`
+    inputList.textContent = `입력한 숫자 : ${history}`;
+    pickRandomNum(1, 100);
 }
 
 function setting() {
