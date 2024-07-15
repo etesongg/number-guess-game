@@ -14,7 +14,7 @@ let playButton = document.getElementById("play-button");
 let resetButton = document.getElementById("reset-button");
 let userInput = document.getElementById("user-input");
 let resultArea = document.getElementById("result-area");
-let chances = 3;
+let chances = 5;
 let gameOver = false;
 let chanceArea = document.getElementById("chance-area");
 chanceArea.textContent = `남은 기회: ${chances}`
@@ -54,10 +54,8 @@ function play() {
         resultArea.textContent = "이미 입력한 숫자입니다. 다른 숫자를 입력해주세요."
         return;
     }
-
     chances --;
-    chanceArea.textContent = `남은 기회: ${chances}`
-
+    
     if (userValue < computerNum){
         resultArea.textContent = "up!"
     }else if (userValue > computerNum){
@@ -66,10 +64,8 @@ function play() {
         resultArea.textContent = "정답!!";
         resultArea.style.color = "#5585b5"
         playButton.disabled = true;
+        return;
     }
-
-    history.push(userValue);
-    inputList.textContent = `입력한 숫자 : ${history}`;
 
     if (chances < 1){
         gameOver = true;
@@ -80,16 +76,20 @@ function play() {
         resultArea.textContent = "실패!!";
         resultArea.style.color = "#f95959"
     }
-    console.log(`chance: ${chances}, history: ${history}`)
+    
+    history.push(userValue);
+    chanceArea.textContent = `남은 기회: ${chances}`
+    inputList.textContent = `입력한 숫자 : ${history}`;
 }
 
 function reset() {
-    chances = 3;
+    chances = 5;
     history = [];
     gameOver = false
     playButton.disabled = false;
     userInput.value = "";
     resultArea.textContent = `up! down! 재밌는 게임~ `;
+    resultArea.style.color = "darkgray";
     chanceArea.textContent = `남은 기회: ${chances}`
     inputList.textContent = `입력한 숫자 : ${history}`;
     pickRandomNum(1, 100);
@@ -132,8 +132,8 @@ function completion() {
         case chanceValue == 10:
             chances = 10;
             break;
-        case chanceValue == 3:
-            chances = 3;
+        case chanceValue == 5:
+            chances = 5;
             break;
     }
     chanceArea.textContent = `남은 기회: ${chances}`
