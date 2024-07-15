@@ -38,7 +38,6 @@ function pickRandomNum(min, max) {
     // computerNum = Math.floor(Math.random() * 100) + 1; // Math.random() 0~1 숫자를 반환(이때 1은 포함 안되는 1에 가까운 숫자를 반환)
     computerNum = Math.floor(Math.random()*(max-min+1)) + min; // 출처 https://velog.io/@woodie/JS-Math-random
     resultArea.textContent = `up! down! 재밌는 게임~ `;
-    console.log(computerNum)
 }
 
 function play() {

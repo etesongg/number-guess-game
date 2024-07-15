@@ -1,6 +1,9 @@
 # number-guess-game 만들기(javascript-study 1-7)
 
 ## Up-Down GAME
+![number-guess-game](https://github.com/user-attachments/assets/aec00711-c7e8-453d-b2f3-4f041ca642a2)
+<br/>
+[위 게임 접속하기](https://number-guess-gamebysone.netlify.app/)
 
 ## 기능
 1. 컴퓨터는 게임이 시작할때 랜덤한 숫자를 뽑는다
